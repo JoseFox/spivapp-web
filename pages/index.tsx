@@ -1,7 +1,9 @@
+import { withUrqlClient } from "next-urql";
 import Head from "next/head";
 import { NavBar } from "../src/components/NavBar";
+import { createUrqlClient } from "../src/utils/createUrqlClient";
 
-export default function Home() {
+function Home() {
   return (
     <div>
       <Head>
@@ -12,3 +14,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default withUrqlClient(createUrqlClient, { ssr: true })(Home);
